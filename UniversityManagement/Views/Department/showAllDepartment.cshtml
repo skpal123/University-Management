@@ -1,0 +1,26 @@
+﻿@model UniversityManagement.Models.Department
+@using UniversityManagement.Models;
+@{
+    ViewBag.Title = "showAllDepartment";
+}
+
+<h2>showAllDepartment</h2>
+
+<fieldset>
+    <legend>Department</legend>
+    <table border="1">
+        <tr>
+            <td>Department Code</td>
+            <td>Department Name</td>
+        </tr>
+        @foreach (Department department in ViewBag.departmentlist as List<Department>)
+        {
+           <tr>
+            <td>@department.DepartmentCode</td>
+               <td>@department.DepartmentName</td>
+        </tr> 
+        }
+        
+    </table>
+</fieldset>
+

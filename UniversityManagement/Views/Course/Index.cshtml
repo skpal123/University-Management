@@ -1,0 +1,84 @@
+﻿@model UniversityManagement.Models.Course
+
+@{
+    Response.Write(ViewBag.result as string);
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Course</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CourseCode)
+            @Html.ValidationMessageFor(model => model.CourseCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CourseName)
+            @Html.ValidationMessageFor(model => model.CourseName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseCredit)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CourseCredit)
+            @Html.ValidationMessageFor(model => model.CourseCredit)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CourseDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CourseDescription)
+            @Html.ValidationMessageFor(model => model.CourseDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DepartmentName)
+        </div>
+        <div class="editor-field">
+           @Html.DropDownList("DepartmentName", ViewBag.departmentlist as List<SelectListItem>)
+            @Html.ValidationMessageFor(model => model.DepartmentName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SemesterName)
+        </div>
+        <div>
+            @Html.DropDownList("SemesterName",new  List<SelectListItem>
+       {
+           new SelectListItem{Value="1st", Text="1st"},
+           new SelectListItem{Value="2nd", Text="2nd"},
+           new SelectListItem{Value="3rd", Text="3rd"},
+           new SelectListItem{Value="4th", Text="4th"},
+           new SelectListItem{Value="5th", Text="5th"},
+           new SelectListItem{Value="6th", Text="6th"},
+           new SelectListItem{Value="7th", Text="7th"},
+           new SelectListItem{Value="8th", Text="8th"},
+       },"Select a Semester")
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
